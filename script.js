@@ -108,7 +108,7 @@ const playRound = (playerSelection, computerSelection) => {
 
 const game = () => {
   alert(
-    "Welcome to the rock, paper, scissors game!\nDo you have what it takes to defeat me?"
+    "Welcome to the rock, paper, scissors game!!\nDo you have what it takes to defeat me?"
   );
   for (let i = 0; i < 5; i++) {
     alert(`Round ${i + 1}`);
