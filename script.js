@@ -4,7 +4,6 @@ let computerRound = 0;
 
 const computerPlay = () => {
   let computerChoice = things[Math.floor(Math.random() * things.length)];
-  console.log("This is the computer choice", computerChoice);
   return computerChoice;
 };
 
@@ -13,7 +12,6 @@ const playerPlay = () => {
     "Choose one of the following:\nrock\npaper\nscissors"
   );
   const playerChoiceLowerCase = playerChoice.toLowerCase();
-  console.log("This is my choice", playerChoice);
   if (
     playerChoiceLowerCase === "rock" ||
     playerChoiceLowerCase === "paper" ||
@@ -115,7 +113,9 @@ const game = () => {
   for (let i = 0; i < 5; i++) {
     alert(`Round ${i + 1}`);
     const playerSelection = playerPlay();
+    console.log("This is my choice", playerSelection);
     const computerSelection = computerPlay();
+    console.log("This is the computer choice", computerSelection);
     playRound(playerSelection, computerSelection);
   }
   if (playerRound > computerRound) {
