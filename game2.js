@@ -191,6 +191,12 @@ The kingdom remains on edge, awaiting the next showdown between good and evil.\n
 You ${playerRound} - ${computerRound} Evil AI`
     );
   }
+  const confirmRestart = confirm("Do you want play again?");
+  if (confirmRestart) {
+    return game();
+  } else {
+    return null;
+  }
 };
 
 game();
