@@ -11,7 +11,23 @@ const playerPlay = () => {
   const playerChoice = prompt(
     "Choose your weapon wisely: rock, paper, or scissors?"
   );
-  const playerChoiceLowerCase = playerChoice.toLowerCase();
+
+  // If the user clicks 'Cancel', playerChoice will be null
+  if (playerChoice === null) {
+    const confirmCancel = confirm(
+      "Are you sure you want to cancel? The fate of the kingdom depends on you!"
+    );
+
+    // If the player confirms cancel, return null to exit
+    if (confirmCancel) {
+      return null; // Stop the game when user confirms cancellation
+    } else {
+      // If the player doesn't confirm cancel, ask for input again
+      return playerPlay();
+    }
+  }
+
+  const playerChoiceLowerCase = playerChoice.trim().toLowerCase();
   if (
     playerChoiceLowerCase === "rock" ||
     playerChoiceLowerCase === "paper" ||
@@ -19,7 +35,9 @@ const playerPlay = () => {
   ) {
     return playerChoiceLowerCase;
   } else {
-    alert("Focus, soldier!\nChoose only one of the following:\nRock\nPaper\nScissors");
+    alert(
+      "Focus, soldier!\nChoose only one of the following:\nRock\nPaper\nScissors"
+    );
     return playerPlay();
   }
 };
@@ -29,12 +47,14 @@ const playRound = (playerSelection, computerSelection) => {
     case playerSelection === "rock" && computerSelection === "scissors":
       playerRound++;
       console.log(
-        `Your ${playerSelection} crushed the Evil AI Lord's ${computerSelection}. 
-        You won this round!\n\n[Evil AI Lord]\n"Noooooooooo, my scissors! 
-        ... I have underestimated you, but I will not be defeated so easily!"`
+        `Your ${playerSelection} crushed the Evil AI Lord's ${computerSelection}. You won this round!\n
+[Evil AI Lord]
+"Noooooooooo, my scissors! ... I have underestimated you, but I will not be defeated so easily!"`
       );
       alert(
-        `Your ${playerSelection} crushed the Evil AI Lord's ${computerSelection}. You won this round!\n\n[Evil AI Lord]\n"Noooooooooo, my scissors! ... I have underestimated you, but I will not be defeated so easily!"`
+        `Your ${playerSelection} crushed the Evil AI Lord's ${computerSelection}. You won this round!\n
+[Evil AI Lord]
+"Noooooooooo, my scissors! ... I have underestimated you, but I will not be defeated so easily!"`
       );
       console.log(`You ${playerRound} - ${computerRound} Evil AI Lord`);
       alert(`You ${playerRound} - ${computerRound} Evil AI Lord`);
@@ -43,12 +63,12 @@ const playRound = (playerSelection, computerSelection) => {
     case playerSelection === "scissors" && computerSelection === "paper":
       playerRound++;
       console.log(
-        `Your ${playerSelection} have cut through Evil AI Lord's ${computerSelection}.
-         You won this round!\n\nEvil AI Lord]\n"My precious organic paper..
-          YOU WILL PAY FOR THIS!"`
+        `Your ${playerSelection} have cut through Evil AI Lord's ${computerSelection}. You won this round!\n
+[Evil AI Lord]\n"My precious organic paper.. YOU WILL PAY FOR THIS!"`
       );
       alert(
-        `Your ${playerSelection} have cut through Evil AI Lord's ${computerSelection}. You won this round!\n\nEvil AI Lord]\n"My precious organic paper.. YOU WILL PAY FOR THIS!"`
+        `Your ${playerSelection} have cut through Evil AI Lord's ${computerSelection}. You won this round!\n
+[Evil AI Lord]\n"My precious organic paper.. YOU WILL PAY FOR THIS!"`
       );
       console.log(`You ${playerRound} - ${computerRound} Evil AI Lord`);
       alert(`You ${playerRound} - ${computerRound} Evil AI Lord`);
@@ -57,12 +77,12 @@ const playRound = (playerSelection, computerSelection) => {
     case playerSelection === "paper" && computerSelection === "rock":
       playerRound++;
       console.log(
-        `Your ${playerSelection} smothered Evil AI Lord's ${computerSelection}.
-         You won this round!\n\n[Evil AI Lord]\n"Ha. Not bad, 
-         but you'll need more than that to defeat me!"`
+        `Your ${playerSelection} smothered Evil AI Lord's ${computerSelection}. You won this round!\n
+[Evil AI Lord]\n"Ha. Not bad, but you'll need more than that to defeat me!"`
       );
       alert(
-        `Your ${playerSelection} smothered Evil AI Lord's ${computerSelection}. You won this round!\n\n[Evil AI Lord]\n"Ha. Not bad, but you'll need more than that to defeat me!"`
+        `Your ${playerSelection} smothered Evil AI Lord's ${computerSelection}. You won this round!\n
+[Evil AI Lord]\n"Ha. Not bad, but you'll need more than that to defeat me!"`
       );
       console.log(`You ${playerRound} - ${computerRound} Evil AI Lord`);
       alert(`You ${playerRound} - ${computerRound} Evil AI Lord`);
@@ -71,12 +91,12 @@ const playRound = (playerSelection, computerSelection) => {
     case playerSelection === "rock" && computerSelection === "paper":
       computerRound++;
       console.log(
-        `Your ${playerSelection} has been trapped by Evil AI Lord's ${computerSelection}.
-         You lost this round!\n\n[Evil AI Lord]\n"HAHAHAHAHAHA. MWAHAHAHAHA. 
-         You thought you could win?"`
+        `Your ${playerSelection} has been trapped by Evil AI Lord's ${computerSelection}. You lost this round!\n
+[Evil AI Lord]\n"HAHAHAHAHAHA. MWAHAHAHAHA. You thought you could win?"`
       );
       alert(
-        `Your ${playerSelection} has been trapped by Evil AI Lord's ${computerSelection}. You lost this round!\n\n[Evil AI Lord]\n"HAHAHAHAHAHA. MWAHAHAHAHA. You thought you could win?"`
+        `Your ${playerSelection} has been trapped by Evil AI Lord's ${computerSelection}. You lost this round!\n
+[Evil AI Lord]\n"HAHAHAHAHAHA. MWAHAHAHAHA. You thought you could win?"`
       );
       console.log(`You ${playerRound} - ${computerRound} Evil AI Lord`);
       alert(`You ${playerRound} - ${computerRound} Evil AI Lord`);
@@ -85,12 +105,12 @@ const playRound = (playerSelection, computerSelection) => {
     case playerSelection === "paper" && computerSelection === "scissors":
       computerRound++;
       console.log(
-        `Your ${playerSelection} has been shredded to pieces by Evil AI Lord's ${computerSelection}.
-         You lost this round!\n\n[Evil AI Lord]
-         \n"Fool, your little tricks are no match for me."`
+        `Your ${playerSelection} has been shredded to pieces by Evil AI Lord's ${computerSelection}. 
+You lost this round!\n\n[Evil AI Lord]\n"Fool, your little tricks are no match for me."`
       );
       alert(
-        `Your ${playerSelection} has been shredded to pieces by Evil AI Lord's ${computerSelection}. You lost this round!\n\n[Evil AI Lord]\n"Fool, your little tricks are no match for me."`
+        `Your ${playerSelection} has been shredded to pieces by Evil AI Lord's ${computerSelection}. 
+You lost this round!\n\n[Evil AI Lord]\n"Fool, your little tricks are no match for me."`
       );
       console.log(`You ${playerRound} - ${computerRound} Evil AI Lord`);
       alert(`You ${playerRound} - ${computerRound} Evil AI Lord`);
@@ -99,12 +119,12 @@ const playRound = (playerSelection, computerSelection) => {
     case playerSelection === "scissors" && computerSelection === "rock":
       computerRound++;
       console.log(
-        `Your ${playerSelection} have been crushed by the Evil AI Lord's ${computerSelection}.
-         You lost this round!\n\n[Evil AI Lord]\n"Consider yourself honored 
-         to have faced me, little knight."`
+        `Your ${playerSelection} have been crushed by the Evil AI Lord's ${computerSelection}. You lost this round!
+\n[Evil AI Lord]\n"Consider yourself honored to have faced me, little knight."`
       );
       alert(
-        `Your ${playerSelection} have been crushed by the Evil AI Lord's ${computerSelection}. You lost this round!\n\n[Evil AI Lord]\n"Consider yourself honored to have faced me, little knight."`
+        `Your ${playerSelection} have been crushed by the Evil AI Lord's ${computerSelection}. You lost this round!
+\n[Evil AI Lord]\n"Consider yourself honored to have faced me, little knight."`
       );
       console.log(`You ${playerRound} - ${computerRound} Evil AI Lord`);
       alert(`You ${playerRound} - ${computerRound} Evil AI Lord`);
@@ -112,11 +132,12 @@ const playRound = (playerSelection, computerSelection) => {
 
     case playerSelection === computerSelection:
       console.log(
-        `You both chose ${playerSelection}. This round is a tie, but the battle must continue.
-        \n\n[Evil AI Lord]\n"Not bad. But not good enough either. HAHAHAHA."`
+        `You both chose ${playerSelection}. This round is a tie, but the battle must continue. \n
+[Evil AI Lord]\n"Not bad. But not good enough either. HAHAHAHA."`
       );
       alert(
-        `You both chose ${playerSelection}. This round is a tie, but the battle must continue. \n\n[Evil AI Lord]\n"Not bad. But not good enough either. HAHAHAHA."`
+        `You both chose ${playerSelection}. This round is a tie, but the battle must continue. \n
+[Evil AI Lord]\n"Not bad. But not good enough either. HAHAHAHA."`
       );
       console.log(`You ${playerRound} - ${computerRound} Evil AI Lord`);
       alert(`You ${playerRound} - ${computerRound} Evil AI Lord`);
@@ -127,31 +148,54 @@ const playRound = (playerSelection, computerSelection) => {
 
 const game = () => {
   alert(
-    "The Evil AI Lord has kidnapped Branko and threatens to unleash his Evil AI minions upon us!\nYou have been chosen to fight for our future in a duel of Rock, Paper, and Scissors.\n\nDo you wish to proceed to the Great Hall?"
+    `The Evil AI Lord has kidnapped Branko and threatens to unleash his Evil AI minions upon us!
+You have been chosen to fight for our future in a duel of Rock, Paper, and Scissors.\n
+Do you wish to proceed to the Great Hall?`
   );
-  alert('[Evil AI Lord]\n"Do you have what it takes to defeat me, small fry? HAHAHAHA."');
+  alert(
+    '[Evil AI Lord]\n"Do you have what it takes to defeat me, small fry? HAHAHAHA."'
+  );
+
   for (let i = 0; i < 5; i++) {
     alert(`Round ${i + 1}`);
     const playerSelection = playerPlay();
-    console.log("This is my choice", playerSelection);
+
+    // stop the entire game early
+    if (playerSelection === null) {
+      alert("You've chosen to walk away. The Evil AI Lord grows stronger...");
+      return; // Exit the game
+    }
+
     const computerSelection = computerPlay();
-    console.log("This is the computer choice", computerSelection);
     playRound(playerSelection, computerSelection);
   }
+
   if (playerRound > computerRound) {
     alert(
-      `ULTIMATE VICTORY\nYou have annihilatd the Evil AI Lord! The kingdom is saved and Branko is freed. You are celebrated as the greatest hero of all time!\n\nYou ${playerRound} - ${computerRound} Evil AI`
+      `ULTIMATE VICTORY
+You have annihilatd the Evil AI Lord! The kingdom is saved and Branko is freed. 
+You are celebrated as the greatest hero of all time!\n\nYou ${playerRound} - ${computerRound} Evil AI`
+    );
+  } else if (playerRound < computerRound) {
+    alert(
+      `FINAL DEFEAT
+Despite your efforts, the Evil AI Lord has triumphed. 
+The kingdom falls into darkness and Branko remains imprisoned. We can only hope for a hero to rise again ...
+\nYou ${playerRound} - ${computerRound} Evil AI`
+    );
+  } else {
+    alert(
+      `DRAW\nThe battle ends in a stalemate. 
+The kingdom remains on edge, awaiting the next showdown between good and evil.\n
+[Evil AI Lord]\nHA! You've got some backbone.. But I will crush you next time! HAHAHAHA.\n
+You ${playerRound} - ${computerRound} Evil AI`
     );
   }
-  if (playerRound < computerRound) {
-    alert(
-      `FINAL DEFEAT\nDespite your efforts, the Evil AI Lord has triumphed. The kingdom falls into darkness and Branko remains imprisoned. We can only hope for a hero to rise again ...\n\nYou ${playerRound} - ${computerRound} Evil AI`
-    );
-  }
-  if (playerRound === computerRound) {
-    alert(
-      `DRAW\nThe battle ends in a stalemate. The kingdom remains on edge, awaiting the next showdown between good and evil.\n\n[Evil AI Lord]\nHA! You've got some backbone.. But I will crush you next time! HAHAHAHA.\n\nYou ${playerRound} - ${computerRound} Evil AI`
-    );
+  const confirmRestart = confirm("Do you want play again?");
+  if (confirmRestart) {
+    return game();
+  } else {
+    return null;
   }
 };
 
